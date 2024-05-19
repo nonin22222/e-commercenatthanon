@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: e-commerce
+    build: .
+    ports:
+      - "5713:5713"  # พอร์ตนี้ต้องตรงกับพอร์ตใน backend
+    depends_on:
+      - mongo_db
+    volumes:
+      - .:/app
+    environment:
+      - MONGO_URL=mongodb://127.0.0.1:27017/e-commerce
+
+  mongo_db:
+    image: mongo:4.4
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
