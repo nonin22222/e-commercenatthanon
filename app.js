@@ -64,6 +64,7 @@ app.use((req, res, next) => {
 
 const port = process.env.PORT || 5713;
 app.listen(port,()=>{
+    console.log(process.env.ATLAS_MONGODB)
     console.log(`Listening on port ${port}`)
 });
 
